@@ -10,11 +10,15 @@ def user_signup_logic(user_input):
 
     username=user_input['username']
     password=user_input['password']
+    confirm_password=user_input['confirm_password']
     email=user_input["email"]
     role=user_input['role']
     phone=user_input.get("phone")
     logger.info(phone)
     created_at=datetime.now()
+
+    if password != confirm_password:
+        raise HTTPException(status_code=400, detail="Passwords do not match")
 
     existing_user = login_checker(username)
     logger.info(f"{len(existing_user)}")

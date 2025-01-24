@@ -3,10 +3,11 @@ import api from "./api";
 import "./App.css";  // Import the CSS file
 
 const App = () => {
-  const [signupResponse, setSignupResponse] = useState([]);
+  const [signupResponse, setSignupResponse] = useState("");
   const [formdata, setFormdata] = useState({
     username: "",
     password: "",
+    confirm_password: "",
     email: "",
     role: "",
     phone: "",
@@ -28,11 +29,13 @@ const App = () => {
       setFormdata({
         username: "",
         password: "",
+        confirm_password: "",
         email: "",
         role: "",
         phone: "",
       });
     } catch (error) {
+      console.error("Signup error:", error);
       setSignupResponse("Signup failed. Please try again.");
     }
   };
@@ -52,6 +55,7 @@ const App = () => {
       <div className="container">
         <h2 className="mt-4 mb-4">Signup Form</h2>
         <form onSubmit={handleSignup} className="w-100">
+          
           <div className="mb-3">
             <label htmlFor="username" className="form-label">Username</label>
             <input
@@ -62,6 +66,7 @@ const App = () => {
               value={formdata.username}
               onChange={handleInputChange}
               required
+              autoComplete="off"
             />
           </div>
 
@@ -75,6 +80,21 @@ const App = () => {
               value={formdata.password}
               onChange={handleInputChange}
               required
+              autoComplete="off"
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="confirm_password" className="form-label">Confirm Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="confirm_password"
+              name="confirm_password"
+              value={formdata.confirm_password}
+              onChange={handleInputChange}
+              required
+              autoComplete="off"
             />
           </div>
 
@@ -88,20 +108,24 @@ const App = () => {
               value={formdata.email}
               onChange={handleInputChange}
               required
+              autoComplete="off"
             />
           </div>
 
           <div className="mb-3">
             <label htmlFor="role" className="form-label">Role</label>
-            <input
-              type="text"
+            <select
               className="form-control"
               id="role"
               name="role"
               value={formdata.role}
               onChange={handleInputChange}
               required
-            />
+            >
+              <option value="" disabled>Select a role</option>
+              <option value="Recruiter">Recruiter</option>
+              <option value="Candidate">Candidate</option>
+            </select>
           </div>
 
           <div className="mb-3">
@@ -114,6 +138,7 @@ const App = () => {
               value={formdata.phone}
               onChange={handleInputChange}
               required
+              autoComplete="off"
             />
           </div>
 

@@ -1,13 +1,20 @@
 from fastapi import FastAPI
-from pydantic import BaseModel,Field,EmailStr,field_validator
+from pydantic import BaseModel,Field,EmailStr,field_validator,model_validator
 from typing import Optional
 
 class SignupBody(BaseModel):
     username: str = Field(..., description="Username is required")
     password: str = Field(..., min_length=8, max_length=20, description="Password must be 8-20 characters long")
-    email:EmailStr
-    role:str
-    phone:Optional[str]=None 
+    confirm_password: str = Field(..., min_length=8, max_length=20, description="Passwords must match")
+    email: EmailStr
+    role: str
+    phone: Optional[str] = None
+
+    @model_validator(mode='after')
+    def check_passwords_match(self) -> "SignupBody":
+        if self.password != self.confirm_password:
+            raise ValueError("Passwords do not match")
+        return self
 
     @field_validator("phone")
     def validate_phone(cls, value: Optional[str]) -> Optional[str]:
