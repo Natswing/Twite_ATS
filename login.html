@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twite AI ATS - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <section class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Twite AI</span>
+                </div>
+                <h2>Welcome Back to ATS</h2>
+                <p>Sign in to manage your recruitment pipeline</p>
+            </div>
+
+            <form class="auth-form" id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="loginEmail">Work Email</label>
+                    <input 
+                        type="email" 
+                        class="form-input" 
+                        id="loginEmail" 
+                        placeholder="name@company.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="loginPassword">Password</label>
+                    <input 
+                        type="password" 
+                        class="form-input" 
+                        id="loginPassword" 
+                        placeholder="••••••••"
+                        required
+                        minlength="8"
+                    >
+                    <buttonbutton type="button" class="fas fa-eye password-toggle" onclick="togglePassword('loginPassword')" onKeyPress="togglePassword('loginPassword')" onKeyDown="togglePassword('loginPassword')" onKeyUp="togglePassword('loginPassword')" title="Toggle Password Visibility"></button>
+                </div>
+
+                <div class="remember-forgot">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="cta-button">Sign In</button>
+
+                <div class="auth-alternative">
+                    Don't have an account? <a href="signup.html">Create account</a>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twite AI ATS - Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <section class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Twite AI</span>
+                </div>
+                <h2>Create Your ATS Account</h2>
+                <p>Start your 14-day free trial - No credit card needed</p>
+            </div>
+
+            <form class="auth-form" id="signupForm">
+                <div class="form-group">
+                    <label class="form-label" for="companyName">Company Name</label>
+                    <input 
+                        type="text" 
+                        class="form-input" 
+                        id="companyName" 
+                        placeholder="Enter company name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="workEmail">Work Email</label>
+                    <input 
+                        type="email" 
+                        class="form-input" 
+                        id="workEmail" 
+                        placeholder="name@company.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="signupPassword">Password</label>
+                    <input 
+                        type="password" 
+                        class="form-input" 
+                        id="signupPassword" 
+                        placeholder="••••••••"
+                        required
+                        minlength="8"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    >
+                    <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')" aria-label="Toggle Password Visibility">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <div class="error-message">Password must contain uppercase, lowercase, and number</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                    <input 
+                        type="tel" 
+                        class="form-input" 
+                        id="phoneNumber" 
+                        placeholder="+1 (555) 123-4567"
+                        pattern="^\+[1-9]{1}[0-9]{3,14}$"
+                    >
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a></label>
+                </div>
+
+                <button type="submit" class="cta-button">Start Free Trial</button>
+
+                <div class="auth-alternative">
+                    Already have an account? <a href="login.html">Sign in</a>
+                </div>
+
+                <div class="security-note">
+                    <i class="fas fa-lock"></i>
+                    All data is SSL encrypted and GDPR compliant
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
